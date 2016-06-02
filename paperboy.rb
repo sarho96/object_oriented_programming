@@ -17,10 +17,10 @@ quota = 0.5 * experience + 50
 =end
 
 class Paperboy
-attr accessor :name, :quota, :experience, :side,
-attr_reader :earnings
+  attr_accessor :name, :quota, :experience, :side
+  attr_reader :earnings
 
-  del initialize(name, quota, experience, side, earnings)
+  def initialize(name, quota, experience, side, earnings)
     @name = name
     @quota = quota
     @experience = experience
@@ -29,7 +29,7 @@ attr_reader :earnings
   end
 # method 1
   def quota
-    50 +(0.5 * experience)
+    50 + (experience / 2)
   end
 
 # method 2
