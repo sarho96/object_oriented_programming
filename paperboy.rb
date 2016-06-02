@@ -17,8 +17,8 @@ quota = 0.5 * experience + 50
 =end
 
 class Paperboy
-  attr_accessor :name, :quota, :experience, :side
-  attr_reader :earnings
+  attr_accessor :name, :quota, :experience, :side, :earnings
+  #attr_reader :earnings
 
   def initialize(name, quota, experience, side, earnings)
     @name = name
@@ -27,23 +27,51 @@ class Paperboy
     @side = side
     @earnings = earnings
   end
-# method 1
-  def quota
-    50 + (experience / 2)
+
+################### method 1 (done) ###################
+  def paperboy_quota
+    quota = 50 + (experience / 2)
   end
 
-# method 2
-  def deliver (start_address, end_address)
-    #takes 2 house numbers
-    #return the amt of $ earned as float #
-    #should update paperboy's experience
-    #start_address = start_address > end address
-    #end address = user_input = end_address > start_address
+################### method 2 ###################
+  def paperboy_deliver (start_address, end_address)
+#determine side delivered to
+    count_odd = 0
+    count_even = 0
+
+
+    if (count_odd == "odd") || (count_even == "even")
+      homes_delivered = (end_address - start_address) / 2
+      if homes_delivered > paperboy_quota
+        earnings += 0.50
+      elsif homes_delivered < paperboy_quota
+        earnings - 2
+      else
+        earnings += 0.25
+      end
+    end
+
+=begin
+    if count_odd == "even"
+      homes_delivered = (end_address - start_address) / 2
+      if homes_delivered > paperboy_quota
+        earnings += 0.50
+      elsif homes_delivered < paperboy_quota
+        earnings - 2
+      else
+        earnings += 0.25
+      end
+    end
+=end
+
   end
-#method 3
-  def report
+  
+################### method 3 (done)###################
+  def paperboy_report
     "I'm #{name} and delivered #{experience} and earned #{earnings}"
-    #return a string about paperboy's performance
-    #ie. "I'm Tommy and delivered 90 papers and earned $$"
+    #return a string about paperboy's performance (done)
   end
 end
+
+
+john = Paperboy.new("John", 50, 19, "odd")
