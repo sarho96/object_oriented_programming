@@ -1,3 +1,21 @@
+=begin
+create a program that will show paperboy's:
+1) name
+2) quota
+3) experience
+4) side
+5) earnings (read-only)
+
+calculate how much paperboy earns if:
+$0.25 per house
++ $0.50 per house over quota
+- 2.00 total for not reaching quota
+
+minimum house = 50
+quota = 0.5 * experience + 50
+
+=end
+
 class Paperboy
 attr accessor :name, :quota, :experience, :side,
 attr_reader :earnings
@@ -11,7 +29,7 @@ attr_reader :earnings
   end
 # method 1
   def quota
-    #return paperboy's quota
+    50 +(0.5 * experience)
   end
 
 # method 2
@@ -24,6 +42,7 @@ attr_reader :earnings
   end
 #method 3
   def report
+    "I'm #{name} and delivered #{experience} and earned #{earnings}"
     #return a string about paperboy's performance
     #ie. "I'm Tommy and delivered 90 papers and earned $$"
   end
