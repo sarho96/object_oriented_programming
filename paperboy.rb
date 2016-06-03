@@ -12,7 +12,7 @@ class Paperboy
 
 ################### method 1 (done) ###################
   def quota
-    quota = 50 + (experience / 2)
+    @quota # = 50 + (@experience / 2)
   end
 
 ################### method 2 ###################
@@ -26,23 +26,21 @@ class Paperboy
         @earnings += 0.25
       end
     end
-    @earnings -= 2 if homes_delivered < quota
+    @earnings -= 2 if homes_delivered < @quota
+
   end
 
 
 
 ################### method 3 (done)###################
   def report
-    "I'm #{name} and delivered #{experience} and earned #{earnings}"
+    "I'm #{@name} and delivered to #{@experience} houses and earned $#{@earnings}"
     #return a string about paperboy's performance (done)
   end
 end
 
-
-john = Paperboy.new("John", "odd")
-john.deliver(1, 400)
-puts john.experience
-puts john.earnings
 stella = Paperboy.new("Stella", "even")
-stella.deliver(4, 1000)
-puts stella.earnings
+stella.deliver(1, 10)
+stella.earnings
+stella.experience
+puts stella.report
