@@ -12,8 +12,9 @@ class Rover
     #if Right then move n, e, s, w
     #because moving left will always output w, and because moving right will
       if (@current_direction == "N") || (@current_direction == "S")
-        @current_direction = "W"
-      elsif turn_direction == "L" && @current_direction == "E"
+        turn_direction = "L"
+      elsif (@current_direction == "W" ) || (@curret_direction == "E")
+        turn_direction == "R"
       end
   end
 #5. def a method called move
@@ -21,8 +22,15 @@ class Rover
     #move method will increment or decrement the x_coordinate or y_coordinate
     #for example: if direction is west, then the position will go down by 1
 
-    if @direction == "W"
-    @position_x -= 1
+  if @current_direction == "N"
+    @y_coordinate += 1
+  elsif @current_direction == "E"
+    @x_coordinate += 1
+  elsif @current_direction == "W"
+    @x_coordinate -= 1
+  elsif @current_direction == "S"
+    @x_coordinate -= 1
+  end
 
 #6. def a method called read_instructions
     def read_instructions(instructions)
