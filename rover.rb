@@ -5,18 +5,24 @@ class Rover
 #3. put instance variables into attr_accessor
   attr_accessor :x_coordinate, :y_coordinate, :current_direction
 
+  def initialize(x_coordinate, y_coordinate, current_direction)
+    @x_coordinate = 0
+    @y_coordinate = 0
+    @current_direction = current_direction
+  end
 
   #4. def a method called read_instructions
-      def read_instructions(instructions)
+  def read_instructions(instructions)
   #5. read_instructions will determine...
       #direct rover to either the move method or turn method
-      instructions.each do |command|
-        if command == "L" || comment == "R"
+    instructions.each do |command|
+      if command == "L" || comment == "R"
           turn(command)
-        elsif == command == "M"
+      elsif command == "M"
           move
-        end
       end
+    end
+  end
 
 
 #6. def a method called turn
@@ -35,19 +41,24 @@ class Rover
       end
   end
 #7. def a method called move
-    #create an if statement to determine the direction
-    #move method will increment or decrement the x_coordinate or y_coordinate
-    #for example: if direction is west, then the position will go down by 1
-
-  if @current_direction == "N"
-    @y_coordinate += 1
-  elsif @current_direction == "E"
-    @x_coordinate += 1
-  elsif current_direction == "W"
-    @x_coordinate -= 1
-  elsif current_direction == "S"
-    @x_coordinate -= 1
+  def move
+      #create an if statement to determine the direction
+      #move method will increment or decrement the x_coordinate or y_coordinate
+      #for example: if direction is west, then the position will go down by 1
+    if @current_direction == "N"
+      @y_coordinate += 1
+    elsif @current_direction == "E"
+      @x_coordinate += 1
+    elsif current_direction == "W"
+      @x_coordinate -= 1
+    elsif current_direction == "S"
+      @x_coordinate -= 1
+    end
   end
 
-
+  def status
+    return "The rover's position is at #{@y_coordinate},#{@x_coordinate}, facing #{@current_direction}"
+  end
 end
+rover1 = Rover.new(0, 1, "W")
+p rover1.status
