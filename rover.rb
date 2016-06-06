@@ -14,13 +14,13 @@ class Rover
 
   #4. def a method called read_instructions
   def read_instructions(instructions)
-  #5. read_instructions will determine...
-      #direct rover to either the move method or turn method
+  #5. read_instructions will direct rover to the move method or turn method
     instructions.each do |command|
-      if command == "L" || comment == "R"
-          turn(command)
+      if command == "L" || command == "R"
+        turn
       elsif command == "M"
-          move
+        move
+      else
       end
     end
   end
@@ -38,6 +38,7 @@ class Rover
         turn_direction == "E"
       elsif (@facing_direction == "W" && command == "L") || (@facing_direction == "E" && command == "R")
           turn_direction = "S"
+      else
       end
   end
 #7. def a method called move
@@ -59,15 +60,15 @@ class Rover
 end
 
 
-#rover1 = Rover.new(0, 1, "W")
-
-puts "What is the plateau size? ex. (5 5)"
-plateau_size = gets.chomp
+puts "What is the plateau size? ex. 5 5"
+plateau_size = gets.chomp.split(" ")
 
 puts "What is your initial start position? enter: x-coordinate, y-coordinate, facing direction"
-initial_start_position = gets.chomp
+initial_start_position = gets.chomp.split(" ")
 
 puts "Please enter your move and turn instructions. ex. LMRMMLM"
-move_turn_instructions = gets.chomp
+move_turn_instructions = gets.chomp.split(" ")
 
-puts "Your final position is: "
+rover = Rover.new(initial_start_position[0].to_i, initial_start_position[1].to_i, initial_start_position[3])
+
+puts "Your rover's final position is #{rover.read_instructions(move_turn_instructions)}"
