@@ -4,6 +4,7 @@ class Rover
 #2. initialize class rover by creating its instance variables
 #3. put instance variables into attr_accessor
   attr_accessor :x_coordinate, :y_coordinate, :facing_direction
+  #within instance variables, ensure that x_coordinate and y_coordinate is set to 0
 
   def initialize(x_coordinate, y_coordinate, facing_direction)
     @x_coordinate = 0
@@ -23,7 +24,6 @@ class Rover
       end
     end
   end
-
 
 #6. def a method called turn
   def turn(turn_direction)
@@ -56,11 +56,18 @@ class Rover
     end
   end
 
-  def status
-    return "The rover's position is at #{@y_coordinate},#{@x_coordinate}, facing #{@facing_direction}"
-  end
 end
 
 
-rover1 = Rover.new(0, 1, "W")
-p rover1.status
+#rover1 = Rover.new(0, 1, "W")
+
+puts "What is the plateau size? ex. (5 5)"
+plateau_size = gets.chomp
+
+puts "What is your initial start position? enter: x-coordinate, y-coordinate, facing direction"
+initial_start_position = gets.chomp
+
+puts "Please enter your move and turn instructions. ex. LMRMMLM"
+move_turn_instructions = gets.chomp
+
+puts "Your final position is: "
