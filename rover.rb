@@ -1,5 +1,4 @@
 class Rover
-
   attr_accessor :x_coordinate, :y_coordinate, :facing_direction
 
   def initialize
@@ -7,6 +6,8 @@ class Rover
     @y_coordinate
     @facing_direction
   end
+
+################ Read_Instructions method ################
 
   def read_instructions(instructions)
     instructions.each do |command|
@@ -20,6 +21,8 @@ class Rover
     return "you are at #{@x_coordinate} #{@y_coordinate} #{@facing_direction}"
   end
 
+################ Turn method ################
+
   def turn(turn_direction)
       if (@facing_direction == "N" && turn_direction == "L") || (@facing_direction == "S" && turn_direction == "R")
         @facing_direction = "W"
@@ -32,6 +35,8 @@ class Rover
       end
   end
 
+################ Move method ################
+
   def move
     if @facing_direction == "N"
       @y_coordinate += 1
@@ -43,10 +48,13 @@ class Rover
       @x_coordinate -= 1
     end
   end
-
 end
 
+################ Instructions ################
 
+exit_program = true
+
+while (exit_program)
   puts "What is the plateau size? ex. 5 5"
   plateau_size = gets.chomp
   puts "Your plateau size is #{plateau_size}"
@@ -64,5 +72,11 @@ end
   rover.y_coordinate=initial_start_position[1].to_i
   rover.facing_direction=initial_start_position[2]
 
-
- puts rover.read_instructions(move_turn_instructions)
+  puts rover.read_instructions(move_turn_instructions)
+  puts "Would you like to deploy your next program? y or n"
+  response = gets.chomp
+    case response
+      when "n"
+        exit_program = false
+      end
+end
